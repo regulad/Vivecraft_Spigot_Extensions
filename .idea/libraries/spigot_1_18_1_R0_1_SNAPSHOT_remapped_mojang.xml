@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spigot-1.18.1-R0.1-SNAPSHOT-remapped-mojang">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.18.1-R0.1-SNAPSHOT/spigot-1.18.1-R0.1-SNAPSHOT-remapped-mojang.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

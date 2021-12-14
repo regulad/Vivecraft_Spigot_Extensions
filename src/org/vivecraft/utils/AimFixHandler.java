@@ -1,12 +1,5 @@
 package org.vivecraft.utils;
 
-import java.util.UUID;
-
-import org.bukkit.Location;
-import org.vivecraft.Reflector;
-import org.vivecraft.VSE;
-import org.vivecraft.VivePlayer;
-
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
@@ -19,6 +12,12 @@ import net.minecraft.server.RunningOnDifferentThreadException;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
+import org.bukkit.Location;
+import org.vivecraft.Reflector;
+import org.vivecraft.VSE;
+import org.vivecraft.VivePlayer;
+
+import java.util.UUID;
 
 public class AimFixHandler extends ChannelInboundHandlerAdapter {
 	private final Connection netManager;
@@ -31,7 +30,9 @@ public class AimFixHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		Player player = ((ServerGamePacketListenerImpl)netManager.getPacketListener()).player;
 		boolean isCapturedPacket = msg instanceof ServerboundUseItemPacket || msg instanceof ServerboundUseItemOnPacket || msg instanceof ServerboundPlayerActionPacket;
-		UUID uuid = player.getGameProfile().getId();
+		// regulad start
+		UUID uuid = player.getUUID();
+		// regulad end
 		if (!VSE.vivePlayers.containsKey(uuid) || !VSE.vivePlayers.get(uuid).isVR() || !isCapturedPacket || player.getServer() == null) {
 			// we don't need to handle this packet, just defer to the next handler in the pipeline
 			ctx.fireChannelRead(msg);

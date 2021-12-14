@@ -21,7 +21,7 @@ local.properties
 
 # IntelliJ
 out/
-.idea/
+#.idea/
 generated/
 *.iml
 

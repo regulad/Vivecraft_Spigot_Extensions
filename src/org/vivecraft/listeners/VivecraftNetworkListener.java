@@ -1,14 +1,10 @@
 package org.vivecraft.listeners;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import com.google.common.base.Charsets;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Pose;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.vivecraft.Reflector;
@@ -17,11 +13,8 @@ import org.vivecraft.VivePlayer;
 import org.vivecraft.utils.MetadataHelper;
 import org.vivecraft.utils.PoseOverrider;
 
-import com.google.common.base.Charsets;
-
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Pose;
+import java.io.*;
+import java.util.Arrays;
 
 public class VivecraftNetworkListener implements PluginMessageListener {
 	public VSE vse;
