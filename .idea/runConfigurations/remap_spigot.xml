@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="remap-spigot" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="net.md_5.specialsource.SpecialSource" />
+    <module name="Vivecraft_Spigot_Extensions" />
+    <option name="PROGRAM_PARAMETERS" value="--live -i out/artifacts/Vivecraft_Spigot_Extensions/Vivecraft_Spigot_Extensions-remapped-obf.jar -o out/artifacts/Vivecraft_Spigot_Extensions/Vivecraft_Spigot_Extensions-remapped-spigot.jar -m C:\Users\parke\.m2\repository\org\spigotmc\minecraft-server\1.18.1-R0.1-SNAPSHOT\minecraft-server-1.18.1-R0.1-SNAPSHOT-maps-spigot.csrg" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
