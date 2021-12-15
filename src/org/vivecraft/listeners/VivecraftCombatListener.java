@@ -58,6 +58,7 @@ public class VivecraftCombatListener implements Listener{
 
 		//this only works if the incoming speed is at max (based! on draw time)
 		//TODO: properly scale in all cases.
+		// TODO: This code invariably causes issues on git-Paper-73
 
 		if(arrow && vp.getDraw() != 0) {
 			proj.setVelocity(proj.getVelocity().multiply(vp.getDraw()));  	
