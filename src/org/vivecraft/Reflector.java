@@ -11,9 +11,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Reflector {
-	//last checked 1.17.1
+	//last checked 1.18.2
 	public static Field Entity_Data_Pose= getPrivateField("ad", Entity.class);
-	public static Field Entity_eyesHeight = getPrivateField("aX", Entity.class);
+	public static Field Entity_eyesHeight = getPrivateField("ba", Entity.class);
 	public static Field SynchedEntityData_itemsById = getPrivateField("f", SynchedEntityData.class);
 	public static Field availableGoals = getPrivateField("d", GoalSelector.class);
 	public static Field aboveGroundCount = getPrivateField("C", ServerGamePacketListenerImpl.class);

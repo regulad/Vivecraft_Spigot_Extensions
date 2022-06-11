@@ -1,13 +1,17 @@
 package org.vivecraft;
 
-import net.milkbowl.vault.permission.Permission;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.WrappedGoal;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraft.world.entity.monster.EnderMan;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.Callable;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -49,12 +53,14 @@ import org.vivecraft.utils.AimFixHandler;
 import org.vivecraft.utils.Headshot;
 import org.vivecraft.utils.MetadataHelper;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.*;
-import java.util.concurrent.Callable;
+import net.milkbowl.vault.permission.Permission;
+import net.minecraft.network.Connection;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.WrappedGoal;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.EnderMan;
 
 public class VSE extends JavaPlugin implements Listener {
 	FileConfiguration config = getConfig();
@@ -137,7 +143,7 @@ public class VSE extends JavaPlugin implements Listener {
 			List<String> temp = sec.getStringList("blocklist");
 			//make an attempt to validate these on the server for debugging.
 			if(temp != null){
-				for (String string : temp) {
+				for (String string : temp) {					
 					if (net.minecraft.core.Registry.BLOCK.get(new ResourceLocation(string)) == null) {
 						getLogger().warning("Unknown climbey block name: " + string);
 						continue;
@@ -377,6 +383,14 @@ public class VSE extends JavaPlugin implements Listener {
 		return false;
 	}
 
+	public static boolean isCompanion(Player p){
+		if(p == null) return false;
+			if(vivePlayers.containsKey(p.getUniqueId())){
+				return !vivePlayers.get(p.getUniqueId()).isVR();
+			}
+		return false;
+	}
+
 	public void setPermissionsGroup(Player p) {
 		if(!vault) return;	
 		if(!getConfig().getBoolean("permissions.enabled")) return;
@@ -384,13 +398,14 @@ public class VSE extends JavaPlugin implements Listener {
 		Map<String, Boolean> groups = new HashMap<String, Boolean>();
 
 		boolean isvive = isVive(p);
+		boolean iscompanion = isCompanion(p);
 
 		String g_vive = getConfig().getString("permissions.vivegroup");
 		String g_classic = getConfig().getString("permissions.non-vivegroup");
 		if (g_vive != null && !g_vive.trim().isEmpty())
 			groups.put(g_vive, isvive);
 		if (g_classic != null && !g_classic.trim().isEmpty())
-			groups.put(g_classic, !isvive);
+			groups.put(g_classic, iscompanion);
 
 		if (isvive) {
 			String g_freemove = getConfig().getString("permissions.freemovegroup");
