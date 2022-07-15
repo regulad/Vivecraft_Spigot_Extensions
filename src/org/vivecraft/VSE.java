@@ -66,7 +66,7 @@ public class VSE extends JavaPlugin implements Listener {
 	FileConfiguration config = getConfig();
 
 	public final static String CHANNEL = "vivecraft:data";
-	private final static String readurl = "https://raw.githubusercontent.com/regulad/Vivecraft_Spigot_Extensions/1.18/version.txt";
+	private final static String readurl = "https://raw.githubusercontent.com/regulad/Vivecraft_Spigot_Extensions/1.19/version.txt";
 	private final static int bStatsId = 6931;
 
 	public static Map<UUID, VivePlayer> vivePlayers = new HashMap<UUID, VivePlayer>();
