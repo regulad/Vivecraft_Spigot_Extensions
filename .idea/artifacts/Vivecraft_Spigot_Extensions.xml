@@ -2,10 +2,10 @@
   <artifact type="jar" build-on-make="true" name="Vivecraft_Spigot_Extensions">
     <output-path>$PROJECT_DIR$/out/artifacts/Vivecraft_Spigot_Extensions</output-path>
     <root id="archive" name="Vivecraft_Spigot_Extensions.jar">
-      <element id="module-output" name="Vivecraft_Spigot_Extensions" />
       <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/config-instructions.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="module-output" name="Vivecraft_Spigot_Extensions" />
     </root>
   </artifact>
 </component>
